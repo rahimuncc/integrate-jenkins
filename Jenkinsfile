@@ -37,7 +37,7 @@ pipeline {
           // Navigate to your project directory and get the URL for hello
           dir('path/to/your/project') {
             def url = sh(script:'doctl sls fn get sample/hello --url', returnStdout:true).trim()
-            sh script: "curl $url?name=Jenkins", returnStatus: true
+            sh script: "curl $url?name=Jenkins", returnStatus: true, nohup: false
           }
         }
       }
@@ -48,7 +48,7 @@ pipeline {
           // Navigate to your project directory and get the URL for goodbye
           dir('path/to/your/project') {
             def url = sh(script:'doctl sls fn get sample/goodbye --url', returnStdout:true).trim()
-            sh script: "curl $url?name=Jenkins", returnStatus: true
+            sh script: "curl $url?name=Jenkins", returnStatus: true, nohup: false
           }
         }
       }
